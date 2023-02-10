@@ -1,0 +1,10 @@
+.vs
+Source/Core/obj
+Source/Plugins/BuilderModes/obj
+Source/Plugins/Statistics/obj
+Source/Plugins/CopyPasteSectorProps/obj
+Source/Plugins/ImageDrawingExample/obj
+*.zip
+Build/*.exe
+Build/*.pdb
+Build/Plugins
