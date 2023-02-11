@@ -433,7 +433,7 @@ namespace CodeImp.DoomBuilder.Rendering
         // This starts rendering
         public bool Start()
         {
-            if (!fpsWatch.IsRunning)
+            if (General.Settings.ShowFPS && !fpsWatch.IsRunning)
             {
                 fpsWatch.Start();
             }
@@ -566,13 +566,16 @@ namespace CodeImp.DoomBuilder.Rendering
             graphics.Shaders.World3D.End();
             geometry = null;
 
-            fps++;
-            if (fpsWatch.ElapsedMilliseconds > 1000)
+            if (General.Settings.ShowFPS)
             {
-                fpsLabel.Text = string.Format("{0} FPS", fps);
-                fps = 0;
-                fpsWatch.Reset();
-                fpsWatch.Start();
+                fps++;
+                if (fpsWatch.ElapsedMilliseconds > 1000)
+                {
+                    fpsLabel.Text = string.Format("{0} FPS", fps);
+                    fps = 0;
+                    fpsWatch.Reset();
+                    fpsWatch.Start();
+                }
             }
         }
 
@@ -1015,7 +1018,10 @@ namespace CodeImp.DoomBuilder.Rendering
             graphics.Shaders.Display2D.EndPass();
             graphics.Shaders.Display2D.End();
 
-            General.Map.Renderer2D.RenderText(fpsLabel);
+            if (General.Settings.ShowFPS)
+            {
+                General.Map.Renderer2D.RenderText(fpsLabel);
+            }
         }
 
         // This switches fog on and off
