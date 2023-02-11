@@ -104,6 +104,11 @@ namespace CodeImp.DoomBuilder.Rendering
         // Things to be rendered, sorted by distance from camera
         private BinaryHeap<VisualThing> thingsbydistance;
 
+        // FPS-related
+        private int fps = 0;
+        private System.Diagnostics.Stopwatch fpsWatch;
+        private TextLabel fpsLabel;
+
         #endregion
 
         #region ================== Properties
@@ -134,6 +139,12 @@ namespace CodeImp.DoomBuilder.Rendering
             // Dummy frustum
             frustum = new ProjectedFrustum2D(new Vector2D(), 0.0f, 0.0f, PROJ_NEAR_PLANE,
                 General.Settings.ViewDistance, Angle2D.DegToRad((float)General.Settings.VisualFOV));
+
+            fpsLabel = new TextLabel(7);
+            fpsLabel.AlignX = TextAlignmentX.Left;
+            fpsLabel.AlignY = TextAlignmentY.Top;
+            fpsLabel.Text = "(FPS unavailable)";
+            fpsWatch = new System.Diagnostics.Stopwatch();
 
             // We have no destructor
             GC.SuppressFinalize(this);
@@ -422,6 +433,11 @@ namespace CodeImp.DoomBuilder.Rendering
         // This starts rendering
         public bool Start()
         {
+            if (General.Settings.ShowFPS && !fpsWatch.IsRunning)
+            {
+                fpsWatch.Start();
+            }
+
             // Create texture
             if (General.Map.Data.ThingBox.Texture == null)
                 General.Map.Data.ThingBox.CreateTexture();
@@ -549,6 +565,18 @@ namespace CodeImp.DoomBuilder.Rendering
             // Done
             graphics.Shaders.World3D.End();
             geometry = null;
+
+            if (General.Settings.ShowFPS)
+            {
+                fps++;
+                if (fpsWatch.ElapsedMilliseconds > 1000)
+                {
+                    fpsLabel.Text = string.Format("{0} FPS", fps);
+                    fps = 0;
+                    fpsWatch.Reset();
+                    fpsWatch.Start();
+                }
+            }
         }
 
         // villsa 9/15/11
@@ -989,6 +1017,11 @@ namespace CodeImp.DoomBuilder.Rendering
             graphics.Device.DrawUserPrimitives<FlatVertex>(PrimitiveType.TriangleStrip, 0, 2, crosshairverts);
             graphics.Shaders.Display2D.EndPass();
             graphics.Shaders.Display2D.End();
+
+            if (General.Settings.ShowFPS)
+            {
+                General.Map.Renderer2D.RenderText(fpsLabel);
+            }
         }
 
         // This switches fog on and off
@@ -997,7 +1030,7 @@ namespace CodeImp.DoomBuilder.Rendering
             graphics.Device.SetRenderState(RenderState.FogEnable, usefog);
         }
 
-        // This siwtches crosshair busy icon on and off
+        // This switches crosshair busy icon on and off
         public void SetCrosshairBusy(bool busy)
         {
             crosshairbusy = busy;

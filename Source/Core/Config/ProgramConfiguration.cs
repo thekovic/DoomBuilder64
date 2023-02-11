@@ -93,6 +93,7 @@ namespace CodeImp.DoomBuilder.Config
         private bool toolbargeometry;
         private bool toolbartesting;
         private bool toolbarfile;
+        private bool showfps;
 
         // These are not stored in the configuration, only used at runtime
         private string defaulttexture;
@@ -155,6 +156,7 @@ namespace CodeImp.DoomBuilder.Config
         public bool ToolbarGeometry { get { return toolbargeometry; } internal set { toolbargeometry = value; } }
         public bool ToolbarTesting { get { return toolbartesting; } internal set { toolbartesting = value; } }
         public bool ToolbarFile { get { return toolbarfile; } internal set { toolbarfile = value; } }
+        public bool ShowFPS { get { return showfps; } internal set { showfps = value; } }
 
         public string DefaultTexture { get { return defaulttexture; } set { defaulttexture = value; } }
         public string DefaultFloorTexture { get { return defaultfloortexture; } set { defaultfloortexture = value; } }
@@ -234,6 +236,7 @@ namespace CodeImp.DoomBuilder.Config
                 toolbargeometry = cfg.ReadSetting("toolbargeometry", true);
                 toolbartesting = cfg.ReadSetting("toolbartesting", true);
                 toolbarfile = cfg.ReadSetting("toolbarfile", true);
+                showfps = cfg.ReadSetting("showfps", false);
 
                 // Success
                 return true;
@@ -295,6 +298,7 @@ namespace CodeImp.DoomBuilder.Config
             cfg.WriteSetting("toolbargeometry", toolbargeometry);
             cfg.WriteSetting("toolbartesting", toolbartesting);
             cfg.WriteSetting("toolbarfile", toolbarfile);
+            cfg.WriteSetting("showfps", showfps);
 
             // Save settings configuration
             General.WriteLogLine("Saving program configuration...");

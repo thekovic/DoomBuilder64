@@ -8,3 +8,4 @@ Source/Plugins/ImageDrawingExample/obj
 Build/*.exe
 Build/*.pdb
 Build/Plugins
+Build/Builder.xml
