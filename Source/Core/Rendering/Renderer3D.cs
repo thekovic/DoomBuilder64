@@ -1024,7 +1024,7 @@ namespace CodeImp.DoomBuilder.Rendering
             graphics.Device.SetRenderState(RenderState.FogEnable, usefog);
         }
 
-        // This siwtches crosshair busy icon on and off
+        // This switches crosshair busy icon on and off
         public void SetCrosshairBusy(bool busy)
         {
             crosshairbusy = busy;

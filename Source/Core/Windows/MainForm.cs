@@ -908,10 +908,6 @@ namespace CodeImp.DoomBuilder.Windows
         {
             if ((General.Map != null) && (General.Editing.Mode != null))
             {
-                foreach (Sector s in General.Map.Map.Sectors)
-                    s.UpdateNeeded = true;
-
-                General.Map.Map.Update();
                 General.Editing.Mode.OnRedrawDisplay();
             }
             else
@@ -2004,6 +2000,11 @@ namespace CodeImp.DoomBuilder.Windows
             General.Interface.DisplayStatus(StatusType.Action, "Full Brightness is now " + (Renderer.FullBrightness ? "ON" : "OFF"));
 
             // Redraw display to show changes
+            foreach (Sector s in General.Map.Map.Sectors)
+            {
+                s.UpdateNeeded = true;
+            }
+            General.Map.Map.Update();
             General.Interface.RedrawDisplay();
         }
 
