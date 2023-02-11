@@ -444,6 +444,10 @@ namespace CodeImp.DoomBuilder.Windows
 
                 SetSwitchMask(l);
 
+                // Action/tag
+                l.Tag = General.Clamp(tag.GetResult(l.Tag), General.Map.FormatInterface.MinTag, General.Map.FormatInterface.MaxTag);
+                if (!action.Empty) l.Action = action.Value;
+
                 // Remove front side?
                 if ((l.Front != null) && (frontside.CheckState == CheckState.Unchecked))
                 {
