@@ -1,0 +1,13 @@
+//**************************************************************************
+//**
+//** explus.txt
+//** Line specials exclusive to the EX+ source port.
+//**
+//**************************************************************************
+
+#define Thing_SpawnSilent(tid)                          211:tid
+#define Sound_Play(id)                                  213:id
+#define Music_Stop                                      215:0
+#define Music_Change(id)                                216:id
+#define Sky_Change(id)                                  217:id
+#define Thing_SpawnProjectile(tid, type)                PushVar(type); 255:tid
