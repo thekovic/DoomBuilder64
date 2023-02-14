@@ -332,70 +332,70 @@ namespace CodeImp.DoomBuilder.Windows
             hlpevent.Handled = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CeilingLightIncrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(ceilingcolor.Color.r, ceilingcolor.Color.g, ceilingcolor.Color.b, 0);
             light.SetIntensity(LIGHTINCVALUE);
             ceilingcolor.Color = light.color;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void TopWallLightIncrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(topcolor.Color.r, topcolor.Color.g, topcolor.Color.b, 0);
             light.SetIntensity(LIGHTINCVALUE);
             topcolor.Color = light.color;
         }
 
-        private void button16_Click(object sender, EventArgs e)
+        private void ThingLightIncrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(thingcolor.Color.r, thingcolor.Color.g, thingcolor.Color.b, 0);
             light.SetIntensity(LIGHTINCVALUE);
             thingcolor.Color = light.color;
         }
 
-        private void button18_Click(object sender, EventArgs e)
+        private void BottomWallLightIncrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(lowercolor.Color.r, lowercolor.Color.g, lowercolor.Color.b, 0);
             light.SetIntensity(LIGHTINCVALUE);
             lowercolor.Color = light.color;
         }
 
-        private void button20_Click(object sender, EventArgs e)
+        private void FloorLightIncrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(floorcolor.Color.r, floorcolor.Color.g, floorcolor.Color.b, 0);
             light.SetIntensity(LIGHTINCVALUE);
             floorcolor.Color = light.color;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CeilingLightDecrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(ceilingcolor.Color.r, ceilingcolor.Color.g, ceilingcolor.Color.b, 0);
             light.SetIntensity(LIGHTDECVALUE);
             ceilingcolor.Color = light.color;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void TopWallLightDecrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(topcolor.Color.r, topcolor.Color.g, topcolor.Color.b, 0);
             light.SetIntensity(LIGHTDECVALUE);
             topcolor.Color = light.color;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void ThingLightDecrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(thingcolor.Color.r, thingcolor.Color.g, thingcolor.Color.b, 0);
             light.SetIntensity(LIGHTDECVALUE);
             thingcolor.Color = light.color;
         }
 
-        private void button17_Click(object sender, EventArgs e)
+        private void BottomWallLightDecrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(lowercolor.Color.r, lowercolor.Color.g, lowercolor.Color.b, 0);
             light.SetIntensity(LIGHTDECVALUE);
             lowercolor.Color = light.color;
         }
 
-        private void button19_Click(object sender, EventArgs e)
+        private void FloorLightDecrease_Click(object sender, EventArgs e)
         {
             Lights light = new Lights(floorcolor.Color.r, floorcolor.Color.g, floorcolor.Color.b, 0);
             light.SetIntensity(LIGHTDECVALUE);

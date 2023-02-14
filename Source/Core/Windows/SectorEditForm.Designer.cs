@@ -45,16 +45,16 @@ namespace CodeImp.DoomBuilder.Windows
             this.sectorheightlabel = new System.Windows.Forms.Label();
             this.floortex = new CodeImp.DoomBuilder.Controls.FlatSelectorControl();
             this.ceilingtex = new CodeImp.DoomBuilder.Controls.FlatSelectorControl();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.floorLightDecrease = new System.Windows.Forms.Button();
+            this.floorLightIncrease = new System.Windows.Forms.Button();
+            this.bottomWallLightDecrease = new System.Windows.Forms.Button();
+            this.bottomWallLightIncrease = new System.Windows.Forms.Button();
+            this.thingLightDecrease = new System.Windows.Forms.Button();
+            this.thingLightIncrease = new System.Windows.Forms.Button();
+            this.topWallLightDecrease = new System.Windows.Forms.Button();
+            this.topWallLightIncrease = new System.Windows.Forms.Button();
+            this.ceilingLightDecrease = new System.Windows.Forms.Button();
+            this.ceilingLightIncrease = new System.Windows.Forms.Button();
             this.floorcolor = new CodeImp.DoomBuilder.Controls.ColorControlSector();
             this.lowercolor = new CodeImp.DoomBuilder.Controls.ColorControlSector();
             this.thingcolor = new CodeImp.DoomBuilder.Controls.ColorControlSector();
@@ -117,18 +117,20 @@ namespace CodeImp.DoomBuilder.Windows
             // labelTag
             // 
             labelTag.AutoSize = true;
-            labelTag.Location = new System.Drawing.Point(55, 21);
+            labelTag.Location = new System.Drawing.Point(69, 26);
+            labelTag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelTag.Name = "labelTag";
-            labelTag.Size = new System.Drawing.Size(27, 14);
+            labelTag.Size = new System.Drawing.Size(34, 16);
             labelTag.TabIndex = 9;
             labelTag.Text = "Tag:";
             // 
             // labelSpecial
             // 
             labelSpecial.AutoSize = true;
-            labelSpecial.Location = new System.Drawing.Point(38, 25);
+            labelSpecial.Location = new System.Drawing.Point(48, 31);
+            labelSpecial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelSpecial.Name = "labelSpecial";
-            labelSpecial.Size = new System.Drawing.Size(45, 14);
+            labelSpecial.Size = new System.Drawing.Size(57, 16);
             labelSpecial.TabIndex = 0;
             labelSpecial.Text = "Special:";
             // 
@@ -146,9 +148,11 @@ namespace CodeImp.DoomBuilder.Windows
             groupfloorceiling.Controls.Add(this.floortex);
             groupfloorceiling.Controls.Add(this.ceilingtex);
             groupfloorceiling.Controls.Add(labelCeilingHeight);
-            groupfloorceiling.Location = new System.Drawing.Point(7, 6);
+            groupfloorceiling.Location = new System.Drawing.Point(9, 8);
+            groupfloorceiling.Margin = new System.Windows.Forms.Padding(4);
             groupfloorceiling.Name = "groupfloorceiling";
-            groupfloorceiling.Size = new System.Drawing.Size(436, 143);
+            groupfloorceiling.Padding = new System.Windows.Forms.Padding(4);
+            groupfloorceiling.Size = new System.Drawing.Size(545, 179);
             groupfloorceiling.TabIndex = 0;
             groupfloorceiling.TabStop = false;
             groupfloorceiling.Text = "Floor and Ceiling ";
@@ -159,9 +163,10 @@ namespace CodeImp.DoomBuilder.Windows
             this.floorheight.AllowNegative = true;
             this.floorheight.AllowRelative = true;
             this.floorheight.ButtonStep = 8;
-            this.floorheight.Location = new System.Drawing.Point(112, 67);
+            this.floorheight.Location = new System.Drawing.Point(140, 84);
+            this.floorheight.Margin = new System.Windows.Forms.Padding(5);
             this.floorheight.Name = "floorheight";
-            this.floorheight.Size = new System.Drawing.Size(88, 24);
+            this.floorheight.Size = new System.Drawing.Size(110, 27);
             this.floorheight.StepValues = null;
             this.floorheight.TabIndex = 23;
             this.floorheight.WhenTextChanged += new System.EventHandler(this.floorheight_TextChanged);
@@ -172,9 +177,10 @@ namespace CodeImp.DoomBuilder.Windows
             this.ceilingheight.AllowNegative = true;
             this.ceilingheight.AllowRelative = true;
             this.ceilingheight.ButtonStep = 8;
-            this.ceilingheight.Location = new System.Drawing.Point(112, 33);
+            this.ceilingheight.Location = new System.Drawing.Point(140, 41);
+            this.ceilingheight.Margin = new System.Windows.Forms.Padding(5);
             this.ceilingheight.Name = "ceilingheight";
-            this.ceilingheight.Size = new System.Drawing.Size(88, 24);
+            this.ceilingheight.Size = new System.Drawing.Size(110, 27);
             this.ceilingheight.StepValues = null;
             this.ceilingheight.TabIndex = 22;
             this.ceilingheight.WhenTextChanged += new System.EventHandler(this.ceilingheight_TextChanged);
@@ -182,181 +188,211 @@ namespace CodeImp.DoomBuilder.Windows
             // sectorheight
             // 
             this.sectorheight.AutoSize = true;
-            this.sectorheight.Location = new System.Drawing.Point(113, 107);
+            this.sectorheight.Location = new System.Drawing.Point(141, 134);
+            this.sectorheight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sectorheight.Name = "sectorheight";
-            this.sectorheight.Size = new System.Drawing.Size(13, 14);
+            this.sectorheight.Size = new System.Drawing.Size(15, 16);
             this.sectorheight.TabIndex = 21;
             this.sectorheight.Text = "0";
             // 
             // sectorheightlabel
             // 
             this.sectorheightlabel.AutoSize = true;
-            this.sectorheightlabel.Location = new System.Drawing.Point(32, 107);
+            this.sectorheightlabel.Location = new System.Drawing.Point(40, 134);
+            this.sectorheightlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sectorheightlabel.Name = "sectorheightlabel";
-            this.sectorheightlabel.Size = new System.Drawing.Size(74, 14);
+            this.sectorheightlabel.Size = new System.Drawing.Size(95, 16);
             this.sectorheightlabel.TabIndex = 20;
             this.sectorheightlabel.Text = "Sector height:";
             // 
             // labelFloorHeight
             // 
             labelFloorHeight.AutoSize = true;
-            labelFloorHeight.Location = new System.Drawing.Point(40, 72);
+            labelFloorHeight.Location = new System.Drawing.Point(50, 90);
+            labelFloorHeight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelFloorHeight.Name = "labelFloorHeight";
-            labelFloorHeight.Size = new System.Drawing.Size(66, 14);
+            labelFloorHeight.Size = new System.Drawing.Size(87, 16);
             labelFloorHeight.TabIndex = 17;
             labelFloorHeight.Text = "Floor height:";
             // 
             // label2
             // 
-            label2.Location = new System.Drawing.Point(237, 11);
+            label2.Location = new System.Drawing.Point(296, 14);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(83, 16);
+            label2.Size = new System.Drawing.Size(104, 20);
             label2.TabIndex = 15;
             label2.Text = "Floor";
             label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
-            label4.Location = new System.Drawing.Point(332, 11);
+            label4.Location = new System.Drawing.Point(415, 14);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(83, 16);
+            label4.Size = new System.Drawing.Size(104, 20);
             label4.TabIndex = 14;
             label4.Text = "Ceiling";
             label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // floortex
             // 
-            this.floortex.Location = new System.Drawing.Point(237, 30);
+            this.floortex.Location = new System.Drawing.Point(296, 38);
+            this.floortex.Margin = new System.Windows.Forms.Padding(5);
             this.floortex.Name = "floortex";
-            this.floortex.Size = new System.Drawing.Size(83, 105);
+            this.floortex.Size = new System.Drawing.Size(104, 131);
             this.floortex.TabIndex = 2;
             this.floortex.TextureName = "";
             // 
             // ceilingtex
             // 
-            this.ceilingtex.Location = new System.Drawing.Point(332, 30);
+            this.ceilingtex.Location = new System.Drawing.Point(415, 38);
+            this.ceilingtex.Margin = new System.Windows.Forms.Padding(5);
             this.ceilingtex.Name = "ceilingtex";
-            this.ceilingtex.Size = new System.Drawing.Size(83, 105);
+            this.ceilingtex.Size = new System.Drawing.Size(104, 131);
             this.ceilingtex.TabIndex = 3;
             this.ceilingtex.TextureName = "";
             // 
             // labelCeilingHeight
             // 
             labelCeilingHeight.AutoSize = true;
-            labelCeilingHeight.Location = new System.Drawing.Point(33, 38);
+            labelCeilingHeight.Location = new System.Drawing.Point(41, 48);
+            labelCeilingHeight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelCeilingHeight.Name = "labelCeilingHeight";
-            labelCeilingHeight.Size = new System.Drawing.Size(73, 14);
+            labelCeilingHeight.Size = new System.Drawing.Size(97, 16);
             labelCeilingHeight.TabIndex = 19;
             labelCeilingHeight.Text = "Ceiling height:";
             // 
             // incdecIntensity
             // 
-            incdecIntensity.Controls.Add(this.button19);
-            incdecIntensity.Controls.Add(this.button20);
-            incdecIntensity.Controls.Add(this.button17);
-            incdecIntensity.Controls.Add(this.button18);
-            incdecIntensity.Controls.Add(this.button5);
-            incdecIntensity.Controls.Add(this.button16);
-            incdecIntensity.Controls.Add(this.button3);
-            incdecIntensity.Controls.Add(this.button4);
-            incdecIntensity.Controls.Add(this.button2);
-            incdecIntensity.Controls.Add(this.button1);
-            incdecIntensity.Location = new System.Drawing.Point(324, 7);
+            incdecIntensity.Controls.Add(this.floorLightDecrease);
+            incdecIntensity.Controls.Add(this.floorLightIncrease);
+            incdecIntensity.Controls.Add(this.bottomWallLightDecrease);
+            incdecIntensity.Controls.Add(this.bottomWallLightIncrease);
+            incdecIntensity.Controls.Add(this.thingLightDecrease);
+            incdecIntensity.Controls.Add(this.thingLightIncrease);
+            incdecIntensity.Controls.Add(this.topWallLightDecrease);
+            incdecIntensity.Controls.Add(this.topWallLightIncrease);
+            incdecIntensity.Controls.Add(this.ceilingLightDecrease);
+            incdecIntensity.Controls.Add(this.ceilingLightIncrease);
+            incdecIntensity.Location = new System.Drawing.Point(405, 9);
+            incdecIntensity.Margin = new System.Windows.Forms.Padding(4);
             incdecIntensity.Name = "incdecIntensity";
-            incdecIntensity.Size = new System.Drawing.Size(112, 167);
+            incdecIntensity.Padding = new System.Windows.Forms.Padding(4);
+            incdecIntensity.Size = new System.Drawing.Size(140, 209);
             incdecIntensity.TabIndex = 6;
             incdecIntensity.TabStop = false;
             incdecIntensity.Text = "Inc/Dec Intensity";
             // 
-            // button19
+            // floorLightDecrease
             // 
-            this.button19.Location = new System.Drawing.Point(59, 135);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(42, 20);
-            this.button19.TabIndex = 61;
-            this.button19.Text = "-";
-            this.button19.UseVisualStyleBackColor = true;
+            this.floorLightDecrease.Location = new System.Drawing.Point(74, 169);
+            this.floorLightDecrease.Margin = new System.Windows.Forms.Padding(4);
+            this.floorLightDecrease.Name = "floorLightDecrease";
+            this.floorLightDecrease.Size = new System.Drawing.Size(52, 25);
+            this.floorLightDecrease.TabIndex = 61;
+            this.floorLightDecrease.Text = "-";
+            this.floorLightDecrease.UseVisualStyleBackColor = true;
+            this.floorLightDecrease.Click += new System.EventHandler(FloorLightDecrease_Click);
             // 
-            // button20
+            // floorLightIncrease
             // 
-            this.button20.Location = new System.Drawing.Point(11, 135);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(42, 20);
-            this.button20.TabIndex = 60;
-            this.button20.Text = "+";
-            this.button20.UseVisualStyleBackColor = true;
+            this.floorLightIncrease.Location = new System.Drawing.Point(14, 169);
+            this.floorLightIncrease.Margin = new System.Windows.Forms.Padding(4);
+            this.floorLightIncrease.Name = "floorLightIncrease";
+            this.floorLightIncrease.Size = new System.Drawing.Size(52, 25);
+            this.floorLightIncrease.TabIndex = 60;
+            this.floorLightIncrease.Text = "+";
+            this.floorLightIncrease.UseVisualStyleBackColor = true;
+            this.floorLightIncrease.Click += new System.EventHandler(FloorLightIncrease_Click);
             // 
-            // button17
+            // bottomWallLightDecrease
             // 
-            this.button17.Location = new System.Drawing.Point(59, 106);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(42, 20);
-            this.button17.TabIndex = 59;
-            this.button17.Text = "-";
-            this.button17.UseVisualStyleBackColor = true;
+            this.bottomWallLightDecrease.Location = new System.Drawing.Point(74, 132);
+            this.bottomWallLightDecrease.Margin = new System.Windows.Forms.Padding(4);
+            this.bottomWallLightDecrease.Name = "bottomWallLightDecrease";
+            this.bottomWallLightDecrease.Size = new System.Drawing.Size(52, 25);
+            this.bottomWallLightDecrease.TabIndex = 59;
+            this.bottomWallLightDecrease.Text = "-";
+            this.bottomWallLightDecrease.UseVisualStyleBackColor = true;
+            this.bottomWallLightDecrease.Click += new System.EventHandler(BottomWallLightDecrease_Click);
             // 
-            // button18
+            // bottomWallLightIncrease
             // 
-            this.button18.Location = new System.Drawing.Point(11, 106);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(42, 20);
-            this.button18.TabIndex = 58;
-            this.button18.Text = "+";
-            this.button18.UseVisualStyleBackColor = true;
+            this.bottomWallLightIncrease.Location = new System.Drawing.Point(14, 132);
+            this.bottomWallLightIncrease.Margin = new System.Windows.Forms.Padding(4);
+            this.bottomWallLightIncrease.Name = "bottomWallLightIncrease";
+            this.bottomWallLightIncrease.Size = new System.Drawing.Size(52, 25);
+            this.bottomWallLightIncrease.TabIndex = 58;
+            this.bottomWallLightIncrease.Text = "+";
+            this.bottomWallLightIncrease.UseVisualStyleBackColor = true;
+            this.bottomWallLightIncrease.Click += new System.EventHandler(BottomWallLightIncrease_Click);
             // 
-            // button5
+            // thingLightDecrease
             // 
-            this.button5.Location = new System.Drawing.Point(59, 77);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(42, 20);
-            this.button5.TabIndex = 57;
-            this.button5.Text = "-";
-            this.button5.UseVisualStyleBackColor = true;
+            this.thingLightDecrease.Location = new System.Drawing.Point(74, 96);
+            this.thingLightDecrease.Margin = new System.Windows.Forms.Padding(4);
+            this.thingLightDecrease.Name = "thingLightDecrease";
+            this.thingLightDecrease.Size = new System.Drawing.Size(52, 25);
+            this.thingLightDecrease.TabIndex = 57;
+            this.thingLightDecrease.Text = "-";
+            this.thingLightDecrease.UseVisualStyleBackColor = true;
+            this.thingLightDecrease.Click += new System.EventHandler(ThingLightDecrease_Click);
             // 
-            // button16
+            // thingLightIncrease
             // 
-            this.button16.Location = new System.Drawing.Point(11, 77);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(42, 20);
-            this.button16.TabIndex = 56;
-            this.button16.Text = "+";
-            this.button16.UseVisualStyleBackColor = true;
+            this.thingLightIncrease.Location = new System.Drawing.Point(14, 96);
+            this.thingLightIncrease.Margin = new System.Windows.Forms.Padding(4);
+            this.thingLightIncrease.Name = "thingLightIncrease";
+            this.thingLightIncrease.Size = new System.Drawing.Size(52, 25);
+            this.thingLightIncrease.TabIndex = 56;
+            this.thingLightIncrease.Text = "+";
+            this.thingLightIncrease.UseVisualStyleBackColor = true;
+            this.thingLightIncrease.Click += new System.EventHandler(ThingLightIncrease_Click);
             // 
-            // button3
+            // topWallLightDecrease
             // 
-            this.button3.Location = new System.Drawing.Point(59, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(42, 20);
-            this.button3.TabIndex = 55;
-            this.button3.Text = "-";
-            this.button3.UseVisualStyleBackColor = true;
+            this.topWallLightDecrease.Location = new System.Drawing.Point(74, 60);
+            this.topWallLightDecrease.Margin = new System.Windows.Forms.Padding(4);
+            this.topWallLightDecrease.Name = "topWallLightDecrease";
+            this.topWallLightDecrease.Size = new System.Drawing.Size(52, 25);
+            this.topWallLightDecrease.TabIndex = 55;
+            this.topWallLightDecrease.Text = "-";
+            this.topWallLightDecrease.UseVisualStyleBackColor = true;
+            this.topWallLightDecrease.Click += new System.EventHandler(TopWallLightDecrease_Click);
             // 
-            // button4
+            // topWallLightIncrease
             // 
-            this.button4.Location = new System.Drawing.Point(11, 48);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(42, 20);
-            this.button4.TabIndex = 54;
-            this.button4.Text = "+";
-            this.button4.UseVisualStyleBackColor = true;
+            this.topWallLightIncrease.Location = new System.Drawing.Point(14, 60);
+            this.topWallLightIncrease.Margin = new System.Windows.Forms.Padding(4);
+            this.topWallLightIncrease.Name = "topWallLightIncrease";
+            this.topWallLightIncrease.Size = new System.Drawing.Size(52, 25);
+            this.topWallLightIncrease.TabIndex = 54;
+            this.topWallLightIncrease.Text = "+";
+            this.topWallLightIncrease.UseVisualStyleBackColor = true;
+            this.topWallLightIncrease.Click += new System.EventHandler(TopWallLightIncrease_Click);
             // 
-            // button2
+            // ceilingLightDecrease
             // 
-            this.button2.Location = new System.Drawing.Point(59, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 20);
-            this.button2.TabIndex = 53;
-            this.button2.Text = "-";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ceilingLightDecrease.Location = new System.Drawing.Point(74, 24);
+            this.ceilingLightDecrease.Margin = new System.Windows.Forms.Padding(4);
+            this.ceilingLightDecrease.Name = "ceilingLightDecrease";
+            this.ceilingLightDecrease.Size = new System.Drawing.Size(52, 25);
+            this.ceilingLightDecrease.TabIndex = 53;
+            this.ceilingLightDecrease.Text = "-";
+            this.ceilingLightDecrease.UseVisualStyleBackColor = true;
+            this.ceilingLightDecrease.Click += new System.EventHandler(CeilingLightDecrease_Click);
             // 
-            // button1
+            // ceilingLightIncrease
             // 
-            this.button1.Location = new System.Drawing.Point(11, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 20);
-            this.button1.TabIndex = 52;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ceilingLightIncrease.Location = new System.Drawing.Point(14, 24);
+            this.ceilingLightIncrease.Margin = new System.Windows.Forms.Padding(4);
+            this.ceilingLightIncrease.Name = "ceilingLightIncrease";
+            this.ceilingLightIncrease.Size = new System.Drawing.Size(52, 25);
+            this.ceilingLightIncrease.TabIndex = 52;
+            this.ceilingLightIncrease.Text = "+";
+            this.ceilingLightIncrease.UseVisualStyleBackColor = true;
+            this.ceilingLightIncrease.Click += new System.EventHandler(CeilingLightIncrease_Click);
             // 
             // coloredLightingInfo
             // 
@@ -365,9 +401,11 @@ namespace CodeImp.DoomBuilder.Windows
             coloredLightingInfo.Controls.Add(this.thingcolor);
             coloredLightingInfo.Controls.Add(this.topcolor);
             coloredLightingInfo.Controls.Add(this.ceilingcolor);
-            coloredLightingInfo.Location = new System.Drawing.Point(7, 162);
+            coloredLightingInfo.Location = new System.Drawing.Point(0, 9);
+            coloredLightingInfo.Margin = new System.Windows.Forms.Padding(4);
             coloredLightingInfo.Name = "coloredLightingInfo";
-            coloredLightingInfo.Size = new System.Drawing.Size(294, 167);
+            coloredLightingInfo.Padding = new System.Windows.Forms.Padding(4);
+            coloredLightingInfo.Size = new System.Drawing.Size(368, 209);
             coloredLightingInfo.TabIndex = 5;
             coloredLightingInfo.TabStop = false;
             coloredLightingInfo.Text = "Colored Lighting Info";
@@ -377,11 +415,12 @@ namespace CodeImp.DoomBuilder.Windows
             this.floorcolor.BackColor = System.Drawing.Color.Transparent;
             this.floorcolor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.floorcolor.Label = "Floor:";
-            this.floorcolor.Location = new System.Drawing.Point(16, 135);
-            this.floorcolor.MaximumSize = new System.Drawing.Size(10000, 23);
-            this.floorcolor.MinimumSize = new System.Drawing.Size(100, 23);
+            this.floorcolor.Location = new System.Drawing.Point(20, 169);
+            this.floorcolor.Margin = new System.Windows.Forms.Padding(5);
+            this.floorcolor.MaximumSize = new System.Drawing.Size(12500, 29);
+            this.floorcolor.MinimumSize = new System.Drawing.Size(125, 29);
             this.floorcolor.Name = "floorcolor";
-            this.floorcolor.Size = new System.Drawing.Size(272, 23);
+            this.floorcolor.Size = new System.Drawing.Size(340, 29);
             this.floorcolor.TabIndex = 6;
             // 
             // lowercolor
@@ -389,11 +428,12 @@ namespace CodeImp.DoomBuilder.Windows
             this.lowercolor.BackColor = System.Drawing.Color.Transparent;
             this.lowercolor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lowercolor.Label = "Bottom Half Wall:";
-            this.lowercolor.Location = new System.Drawing.Point(16, 106);
-            this.lowercolor.MaximumSize = new System.Drawing.Size(10000, 23);
-            this.lowercolor.MinimumSize = new System.Drawing.Size(100, 23);
+            this.lowercolor.Location = new System.Drawing.Point(20, 132);
+            this.lowercolor.Margin = new System.Windows.Forms.Padding(5);
+            this.lowercolor.MaximumSize = new System.Drawing.Size(12500, 29);
+            this.lowercolor.MinimumSize = new System.Drawing.Size(125, 29);
             this.lowercolor.Name = "lowercolor";
-            this.lowercolor.Size = new System.Drawing.Size(272, 23);
+            this.lowercolor.Size = new System.Drawing.Size(340, 29);
             this.lowercolor.TabIndex = 5;
             // 
             // thingcolor
@@ -401,11 +441,12 @@ namespace CodeImp.DoomBuilder.Windows
             this.thingcolor.BackColor = System.Drawing.Color.Transparent;
             this.thingcolor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thingcolor.Label = "Thing:";
-            this.thingcolor.Location = new System.Drawing.Point(16, 77);
-            this.thingcolor.MaximumSize = new System.Drawing.Size(10000, 23);
-            this.thingcolor.MinimumSize = new System.Drawing.Size(100, 23);
+            this.thingcolor.Location = new System.Drawing.Point(20, 96);
+            this.thingcolor.Margin = new System.Windows.Forms.Padding(5);
+            this.thingcolor.MaximumSize = new System.Drawing.Size(12500, 29);
+            this.thingcolor.MinimumSize = new System.Drawing.Size(125, 29);
             this.thingcolor.Name = "thingcolor";
-            this.thingcolor.Size = new System.Drawing.Size(272, 23);
+            this.thingcolor.Size = new System.Drawing.Size(340, 29);
             this.thingcolor.TabIndex = 4;
             // 
             // topcolor
@@ -413,11 +454,12 @@ namespace CodeImp.DoomBuilder.Windows
             this.topcolor.BackColor = System.Drawing.Color.Transparent;
             this.topcolor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.topcolor.Label = "Top Half Wall:";
-            this.topcolor.Location = new System.Drawing.Point(16, 48);
-            this.topcolor.MaximumSize = new System.Drawing.Size(10000, 23);
-            this.topcolor.MinimumSize = new System.Drawing.Size(100, 23);
+            this.topcolor.Location = new System.Drawing.Point(20, 60);
+            this.topcolor.Margin = new System.Windows.Forms.Padding(5);
+            this.topcolor.MaximumSize = new System.Drawing.Size(12500, 29);
+            this.topcolor.MinimumSize = new System.Drawing.Size(125, 29);
             this.topcolor.Name = "topcolor";
-            this.topcolor.Size = new System.Drawing.Size(272, 23);
+            this.topcolor.Size = new System.Drawing.Size(340, 29);
             this.topcolor.TabIndex = 3;
             // 
             // ceilingcolor
@@ -425,11 +467,12 @@ namespace CodeImp.DoomBuilder.Windows
             this.ceilingcolor.BackColor = System.Drawing.Color.Transparent;
             this.ceilingcolor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ceilingcolor.Label = "Ceiling:";
-            this.ceilingcolor.Location = new System.Drawing.Point(16, 19);
-            this.ceilingcolor.MaximumSize = new System.Drawing.Size(10000, 23);
-            this.ceilingcolor.MinimumSize = new System.Drawing.Size(100, 23);
+            this.ceilingcolor.Location = new System.Drawing.Point(20, 24);
+            this.ceilingcolor.Margin = new System.Windows.Forms.Padding(5);
+            this.ceilingcolor.MaximumSize = new System.Drawing.Size(12500, 29);
+            this.ceilingcolor.MinimumSize = new System.Drawing.Size(125, 29);
             this.ceilingcolor.Name = "ceilingcolor";
-            this.ceilingcolor.Size = new System.Drawing.Size(272, 23);
+            this.ceilingcolor.Size = new System.Drawing.Size(340, 29);
             this.ceilingcolor.TabIndex = 2;
             // 
             // groupaction
@@ -439,9 +482,11 @@ namespace CodeImp.DoomBuilder.Windows
             this.groupaction.Controls.Add(this.tag);
             this.groupaction.Controls.Add(labelTag);
             this.groupaction.Controls.Add(this.newtag);
-            this.groupaction.Location = new System.Drawing.Point(7, 394);
+            this.groupaction.Location = new System.Drawing.Point(9, 492);
+            this.groupaction.Margin = new System.Windows.Forms.Padding(4);
             this.groupaction.Name = "groupaction";
-            this.groupaction.Size = new System.Drawing.Size(436, 49);
+            this.groupaction.Padding = new System.Windows.Forms.Padding(4);
+            this.groupaction.Size = new System.Drawing.Size(545, 61);
             this.groupaction.TabIndex = 2;
             this.groupaction.TabStop = false;
             this.groupaction.Text = " Identification ";
@@ -452,17 +497,19 @@ namespace CodeImp.DoomBuilder.Windows
             this.tag.AllowNegative = false;
             this.tag.AllowRelative = true;
             this.tag.ButtonStep = 1;
-            this.tag.Location = new System.Drawing.Point(89, 16);
+            this.tag.Location = new System.Drawing.Point(111, 20);
+            this.tag.Margin = new System.Windows.Forms.Padding(5);
             this.tag.Name = "tag";
-            this.tag.Size = new System.Drawing.Size(73, 24);
+            this.tag.Size = new System.Drawing.Size(91, 27);
             this.tag.StepValues = null;
             this.tag.TabIndex = 25;
             // 
             // newtag
             // 
-            this.newtag.Location = new System.Drawing.Point(174, 17);
+            this.newtag.Location = new System.Drawing.Point(218, 21);
+            this.newtag.Margin = new System.Windows.Forms.Padding(4);
             this.newtag.Name = "newtag";
-            this.newtag.Size = new System.Drawing.Size(76, 23);
+            this.newtag.Size = new System.Drawing.Size(95, 29);
             this.newtag.TabIndex = 1;
             this.newtag.Text = "New Tag";
             this.newtag.UseVisualStyleBackColor = true;
@@ -475,9 +522,11 @@ namespace CodeImp.DoomBuilder.Windows
             this.groupeffect.Controls.Add(this.browseeffect);
             this.groupeffect.Controls.Add(this.effect);
             this.groupeffect.Controls.Add(labelSpecial);
-            this.groupeffect.Location = new System.Drawing.Point(7, 340);
+            this.groupeffect.Location = new System.Drawing.Point(9, 425);
+            this.groupeffect.Margin = new System.Windows.Forms.Padding(4);
             this.groupeffect.Name = "groupeffect";
-            this.groupeffect.Size = new System.Drawing.Size(436, 48);
+            this.groupeffect.Padding = new System.Windows.Forms.Padding(4);
+            this.groupeffect.Size = new System.Drawing.Size(545, 60);
             this.groupeffect.TabIndex = 1;
             this.groupeffect.TabStop = false;
             this.groupeffect.Text = " Effects ";
@@ -486,10 +535,11 @@ namespace CodeImp.DoomBuilder.Windows
             // 
             this.browseeffect.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.browseeffect.Image = global::CodeImp.DoomBuilder.Properties.Resources.treeview;
-            this.browseeffect.Location = new System.Drawing.Point(385, 21);
+            this.browseeffect.Location = new System.Drawing.Point(481, 26);
+            this.browseeffect.Margin = new System.Windows.Forms.Padding(4);
             this.browseeffect.Name = "browseeffect";
-            this.browseeffect.Padding = new System.Windows.Forms.Padding(0, 0, 1, 3);
-            this.browseeffect.Size = new System.Drawing.Size(30, 23);
+            this.browseeffect.Padding = new System.Windows.Forms.Padding(0, 0, 1, 4);
+            this.browseeffect.Size = new System.Drawing.Size(38, 29);
             this.browseeffect.TabIndex = 1;
             this.browseeffect.Text = " ";
             this.browseeffect.UseVisualStyleBackColor = true;
@@ -501,10 +551,11 @@ namespace CodeImp.DoomBuilder.Windows
             this.effect.Cursor = System.Windows.Forms.Cursors.Default;
             this.effect.Empty = false;
             this.effect.GeneralizedCategories = null;
-            this.effect.Location = new System.Drawing.Point(89, 22);
+            this.effect.Location = new System.Drawing.Point(111, 28);
             this.effect.Macro = false;
+            this.effect.Margin = new System.Windows.Forms.Padding(5);
             this.effect.Name = "effect";
-            this.effect.Size = new System.Drawing.Size(290, 21);
+            this.effect.Size = new System.Drawing.Size(362, 24);
             this.effect.TabIndex = 0;
             this.effect.Value = 402;
             // 
@@ -512,9 +563,10 @@ namespace CodeImp.DoomBuilder.Windows
             // 
             this.cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel.Location = new System.Drawing.Point(353, 652);
+            this.cancel.Location = new System.Drawing.Point(441, 815);
+            this.cancel.Margin = new System.Windows.Forms.Padding(4);
             this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(112, 25);
+            this.cancel.Size = new System.Drawing.Size(140, 31);
             this.cancel.TabIndex = 2;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = true;
@@ -523,9 +575,10 @@ namespace CodeImp.DoomBuilder.Windows
             // apply
             // 
             this.apply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.apply.Location = new System.Drawing.Point(236, 652);
+            this.apply.Location = new System.Drawing.Point(295, 815);
+            this.apply.Margin = new System.Windows.Forms.Padding(4);
             this.apply.Name = "apply";
-            this.apply.Size = new System.Drawing.Size(112, 25);
+            this.apply.Size = new System.Drawing.Size(140, 31);
             this.apply.TabIndex = 1;
             this.apply.Text = "OK";
             this.apply.UseVisualStyleBackColor = true;
@@ -533,34 +586,38 @@ namespace CodeImp.DoomBuilder.Windows
             // 
             // sectorproperties
             // 
-            this.sectorproperties.Controls.Add(coloredLightingInfo);
             this.sectorproperties.Controls.Add(this.groupeffect);
             this.sectorproperties.Controls.Add(this.lightsPanel);
             this.sectorproperties.Controls.Add(this.settingsgroup);
             this.sectorproperties.Controls.Add(this.groupaction);
             this.sectorproperties.Controls.Add(groupfloorceiling);
             this.sectorproperties.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sectorproperties.Location = new System.Drawing.Point(12, 12);
+            this.sectorproperties.Location = new System.Drawing.Point(15, 15);
+            this.sectorproperties.Margin = new System.Windows.Forms.Padding(4);
             this.sectorproperties.Name = "sectorproperties";
-            this.sectorproperties.Padding = new System.Windows.Forms.Padding(3);
-            this.sectorproperties.Size = new System.Drawing.Size(449, 592);
+            this.sectorproperties.Padding = new System.Windows.Forms.Padding(4);
+            this.sectorproperties.Size = new System.Drawing.Size(561, 740);
             this.sectorproperties.TabIndex = 0;
             this.sectorproperties.Text = "Properties";
             // 
             // lightsPanel
             // 
             this.lightsPanel.Controls.Add(incdecIntensity);
-            this.lightsPanel.Location = new System.Drawing.Point(7, 155);
+            this.lightsPanel.Controls.Add(coloredLightingInfo);
+            this.lightsPanel.Location = new System.Drawing.Point(9, 194);
+            this.lightsPanel.Margin = new System.Windows.Forms.Padding(4);
             this.lightsPanel.Name = "lightsPanel";
-            this.lightsPanel.Size = new System.Drawing.Size(436, 179);
+            this.lightsPanel.Size = new System.Drawing.Size(545, 224);
             this.lightsPanel.TabIndex = 4;
             // 
             // settingsgroup
             // 
             this.settingsgroup.Controls.Add(this.flags);
-            this.settingsgroup.Location = new System.Drawing.Point(7, 449);
+            this.settingsgroup.Location = new System.Drawing.Point(9, 561);
+            this.settingsgroup.Margin = new System.Windows.Forms.Padding(4);
             this.settingsgroup.Name = "settingsgroup";
-            this.settingsgroup.Size = new System.Drawing.Size(436, 136);
+            this.settingsgroup.Padding = new System.Windows.Forms.Padding(4);
+            this.settingsgroup.Size = new System.Drawing.Size(545, 170);
             this.settingsgroup.TabIndex = 3;
             this.settingsgroup.TabStop = false;
             this.settingsgroup.Text = "Settings";
@@ -572,14 +629,16 @@ namespace CodeImp.DoomBuilder.Windows
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flags.AutoScroll = true;
             this.flags.Columns = 3;
-            this.flags.Location = new System.Drawing.Point(6, 14);
+            this.flags.Location = new System.Drawing.Point(8, 18);
+            this.flags.Margin = new System.Windows.Forms.Padding(5);
             this.flags.Name = "flags";
-            this.flags.Size = new System.Drawing.Size(424, 116);
+            this.flags.Size = new System.Drawing.Size(530, 145);
             this.flags.TabIndex = 4;
             // 
             // flatSelectorControl2
             // 
             this.flatSelectorControl2.Location = new System.Drawing.Point(271, 37);
+            this.flatSelectorControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flatSelectorControl2.Name = "flatSelectorControl2";
             this.flatSelectorControl2.Size = new System.Drawing.Size(83, 105);
             this.flatSelectorControl2.TabIndex = 13;
@@ -588,6 +647,7 @@ namespace CodeImp.DoomBuilder.Windows
             // flatSelectorControl1
             // 
             this.flatSelectorControl1.Location = new System.Drawing.Point(363, 37);
+            this.flatSelectorControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flatSelectorControl1.Name = "flatSelectorControl1";
             this.flatSelectorControl1.Size = new System.Drawing.Size(83, 105);
             this.flatSelectorControl1.TabIndex = 12;
@@ -596,25 +656,27 @@ namespace CodeImp.DoomBuilder.Windows
             // heightpanel3
             // 
             this.heightpanel3.BackColor = System.Drawing.Color.Navy;
-            this.heightpanel3.Location = new System.Drawing.Point(128, -19);
+            this.heightpanel3.Location = new System.Drawing.Point(160, -24);
+            this.heightpanel3.Margin = new System.Windows.Forms.Padding(4);
             this.heightpanel3.Name = "heightpanel3";
-            this.heightpanel3.Size = new System.Drawing.Size(78, 677);
+            this.heightpanel3.Size = new System.Drawing.Size(98, 846);
             this.heightpanel3.TabIndex = 5;
             this.heightpanel3.Visible = false;
             // 
             // SectorEditForm
             // 
             this.AcceptButton = this.apply;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.cancel;
-            this.ClientSize = new System.Drawing.Size(477, 685);
+            this.ClientSize = new System.Drawing.Size(596, 856);
             this.Controls.Add(this.sectorproperties);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.apply);
             this.Controls.Add(this.heightpanel3);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SectorEditForm";
@@ -661,16 +723,16 @@ namespace CodeImp.DoomBuilder.Windows
         private System.Windows.Forms.GroupBox groupeffect;
         private System.Windows.Forms.GroupBox groupaction;
         private System.Windows.Forms.Panel lightsPanel;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button floorLightDecrease;
+        private System.Windows.Forms.Button floorLightIncrease;
+        private System.Windows.Forms.Button bottomWallLightDecrease;
+        private System.Windows.Forms.Button bottomWallLightIncrease;
+        private System.Windows.Forms.Button thingLightDecrease;
+        private System.Windows.Forms.Button thingLightIncrease;
+        private System.Windows.Forms.Button topWallLightDecrease;
+        private System.Windows.Forms.Button topWallLightIncrease;
+        private System.Windows.Forms.Button ceilingLightDecrease;
+        private System.Windows.Forms.Button ceilingLightIncrease;
         private Controls.ColorControlSector floorcolor;
         private Controls.ColorControlSector lowercolor;
         private Controls.ColorControlSector thingcolor;
