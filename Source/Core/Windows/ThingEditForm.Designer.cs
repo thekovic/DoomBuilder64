@@ -230,6 +230,7 @@ namespace CodeImp.DoomBuilder.Windows
             this.newtag.TabIndex = 1;
             this.newtag.Text = "New Tag";
             this.newtag.UseVisualStyleBackColor = true;
+            this.newtag.Click += new System.EventHandler(this.newtag_Click);
             // 
             // spritetex
             // 

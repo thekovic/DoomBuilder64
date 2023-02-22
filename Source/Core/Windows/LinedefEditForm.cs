@@ -557,28 +557,6 @@ namespace CodeImp.DoomBuilder.Windows
             action.Value = ActionBrowserForm.BrowseAction(this, action.Value);
         }
 
-        // Custom fields on front sides
-        private void customfrontbutton_Click(object sender, EventArgs e)
-        {
-            // Make collection of front sides
-            List<MapElement> sides = new List<MapElement>(lines.Count);
-            foreach (Linedef l in lines) if (l.Front != null) sides.Add(l.Front);
-
-            // Edit these
-            CustomFieldsForm.ShowDialog(this, "Front side custom fields", "sidedef", sides, General.Map.Config.SidedefFields);
-        }
-
-        // Custom fields on back sides
-        private void custombackbutton_Click(object sender, EventArgs e)
-        {
-            // Make collection of back sides
-            List<MapElement> sides = new List<MapElement>(lines.Count);
-            foreach (Linedef l in lines) if (l.Back != null) sides.Add(l.Back);
-
-            // Edit these
-            CustomFieldsForm.ShowDialog(this, "Back side custom fields", "sidedef", sides, General.Map.Config.SidedefFields);
-        }
-
         // Help!
         private void LinedefEditForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
