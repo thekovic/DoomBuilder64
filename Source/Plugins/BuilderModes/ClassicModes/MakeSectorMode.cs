@@ -487,8 +487,8 @@ namespace CodeImp.DoomBuilder.BuilderModes
 
             editside = null;
             nearestside = null;
-            alllines.Clear();
-            allsides.Clear();
+            alllines?.Clear();
+            allsides?.Clear();
         }
 
         // Something is redone
@@ -498,8 +498,8 @@ namespace CodeImp.DoomBuilder.BuilderModes
 
             editside = null;
             nearestside = null;
-            alllines.Clear();
-            allsides.Clear();
+            alllines?.Clear();
+            allsides?.Clear();
         }
 
         // Processing
