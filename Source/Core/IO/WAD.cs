@@ -274,15 +274,18 @@ namespace CodeImp.DoomBuilder.IO
             // We will be adding a lump
             numlumps++;
 
+            var mod = datalength % 4;
+            var padding = mod != 0 ? 4 - mod : 0;
+
             // Extend the file
-            file.SetLength(file.Length + datalength + 16);
+            file.SetLength(file.Length + datalength + 16 + padding);
 
             // Create the lump
             lump = new Lump(file, this, Lump.MakeFixedName(name, ENCODING), lumpsoffset, datalength);
             lumps.Insert(position, lump);
 
             // Advance lumps table offset
-            lumpsoffset += datalength;
+            lumpsoffset += datalength + padding;
 
             // Write the new headers
             WriteHeaders();

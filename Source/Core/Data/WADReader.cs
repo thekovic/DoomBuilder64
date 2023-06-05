@@ -472,7 +472,7 @@ namespace CodeImp.DoomBuilder.Data
                     images.Add(image);
 
                     // villsa
-                    hash = HashTextureName(file.Lumps[i].Name);
+                    hash = (!General.Map.FormatInterface.InDoom64N64Mode) ? HashTextureName(file.Lumps[i].Name) : (uint)(i - startindex - 1);
                     General.Map.TextureHashKey.Add(hash);
                     General.Map.TextureHashName.Add(file.Lumps[i].Name);
                 }

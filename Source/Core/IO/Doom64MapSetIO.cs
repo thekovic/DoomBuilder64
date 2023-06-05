@@ -91,6 +91,7 @@ namespace CodeImp.DoomBuilder.IO
         public override double MaxCoordinate { get { return (double)short.MaxValue; } }
         public override double MinCoordinate { get { return (double)short.MinValue; } }
         public override bool InDoom64Mode { get { return true; } } // villsa
+        public override bool InDoom64N64Mode { get { return false; } }
 
         #endregion
 
