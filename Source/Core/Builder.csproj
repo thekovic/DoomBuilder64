@@ -171,6 +171,7 @@
     <Compile Include="Actions\ActionManager.cs" />
     <Compile Include="Config\CompilerInfo.cs" />
     <Compile Include="Config\ConfigurationInfo.cs" />
+    <Compile Include="IO\ConvertDoom64PCtoN64MapSetIO.cs" />
     <Compile Include="IO\Doom64N64MapSetIO.cs" />
     <Compile Include="VisualModes\VisualBlockMap.cs" />
     <Compile Include="VisualModes\VisualMode.cs" />

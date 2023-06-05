@@ -69,5 +69,6 @@ namespace CodeImp.DoomBuilder.IO
         double MinCoordinate { get; }
         bool InDoom64Mode { get; }  // villsa
         bool InDoom64N64Mode { get; }
+        bool IsConvertor { get; }
     }
 }

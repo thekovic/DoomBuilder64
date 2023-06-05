@@ -494,7 +494,8 @@ namespace CodeImp.DoomBuilder
 
             // Only write the map and rebuild nodes when the actual map has changed
             // (not when only scripts have changed)
-            if (changed)
+            // Always write map if configuration is a convertor hack
+            if (changed || General.Map.FormatInterface.IsConvertor)
             {
                 // Make a copy of the map data
                 outputset = map.Clone();

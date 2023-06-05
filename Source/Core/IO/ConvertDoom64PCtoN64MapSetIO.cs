@@ -32,7 +32,7 @@ using CodeImp.DoomBuilder.Config;   // villsa
 
 namespace CodeImp.DoomBuilder.IO
 {
-    internal class Doom64MapSetIO : MapSetIO
+    internal class ConvertDoom64PCtoN64MapSetIO : MapSetIO
     {
         #region ================== Constants
 
@@ -41,7 +41,7 @@ namespace CodeImp.DoomBuilder.IO
         #region ================== Constructor / Disposer
 
         // Constructor
-        public Doom64MapSetIO(WAD wad, MapManager manager) : base(wad, manager)
+        public ConvertDoom64PCtoN64MapSetIO(WAD wad, MapManager manager) : base(wad, manager)
         {
         }
 
@@ -92,7 +92,7 @@ namespace CodeImp.DoomBuilder.IO
         public override double MinCoordinate { get { return (double)short.MinValue; } }
         public override bool InDoom64Mode { get { return true; } } // villsa
         public override bool InDoom64N64Mode { get { return false; } }
-        public override bool IsConvertor { get { return false; } }
+        public override bool IsConvertor { get { return true; } }
 
         #endregion
 
@@ -183,58 +183,6 @@ namespace CodeImp.DoomBuilder.IO
             // Return result;
             return map;
         }
-
-        // This reads the map info header from WAD file
-        /*private void ReadMapInfo(MapSet map, string mapname)
-        {
-            MemoryStream mem;
-            BinaryReader reader;
-            PixelColor color;
-
-            if (wad.Lumps[wad.FindLumpIndex(mapname)].Length <= 0)
-                return;
-
-            Lump lump = wad.FindLump(mapname);
-            mem = new MemoryStream(lump.Stream.ReadAllBytes());
-            reader = new BinaryReader(mem);
-
-            General.Map.Map.MapInfo.MapName = General.Map.Map.MapInfo.ReadString(reader);
-
-            for (int i = 0; i < MapInfo.INTERMISSION_LINES; i++)
-                map.MapInfo.IntermissionText[i] = map.MapInfo.ReadString(reader);
-
-            General.Map.Map.MapInfo.OverrideSky = reader.ReadBoolean();
-            General.Map.Map.MapInfo.Finale = reader.ReadBoolean();
-            General.Map.Map.MapInfo.Type = reader.ReadByte();
-
-            color = new PixelColor();
-
-            color.b = reader.ReadByte();
-            color.g = reader.ReadByte();
-            color.r = reader.ReadByte();
-            color.a = reader.ReadByte();
-
-            General.Map.Map.MapInfo.FogColor = color;
-
-            color.b = reader.ReadByte();
-            color.g = reader.ReadByte();
-            color.r = reader.ReadByte();
-            color.a = reader.ReadByte();
-
-            General.Map.Map.MapInfo.TopSkyColor = color;
-
-            color.b = reader.ReadByte();
-            color.g = reader.ReadByte();
-            color.r = reader.ReadByte();
-            color.a = reader.ReadByte();
-
-            General.Map.Map.MapInfo.LowerSkyColor = color;
-
-            General.Map.Map.MapInfo.MusicID = reader.ReadUInt16();
-
-            // Done
-            mem.Dispose();
-        }*/
 
         // This reads the THINGS from WAD file
         private void ReadThings(MapSet map, int firstindex)
@@ -518,51 +466,6 @@ namespace CodeImp.DoomBuilder.IO
                                 // Create front sidedef
                                 if (sectorlink.ContainsKey(sc))
                                 {
-                                    /*for (int j = 0; j < General.Map.TextureHashKey.Count; j++)
-                                    {
-                                        if (thigh == General.Map.TextureHashKey[j])
-                                        {
-                                            if (j == 0)
-                                            {
-                                                hname = "-";
-                                                break;
-                                            }
-
-                                            hname = General.Map.TextureHashName[j];
-                                            break;
-                                        }
-                                    }
-
-                                    for (int j = 0; j < General.Map.TextureHashKey.Count; j++)
-                                    {
-                                        if (tlow == General.Map.TextureHashKey[j])
-                                        {
-                                            if (j == 0)
-                                            {
-                                                lname = "-";
-                                                break;
-                                            }
-
-                                            lname = General.Map.TextureHashName[j];
-                                            break;
-                                        }
-                                    }
-
-                                    for (int j = 0; j < General.Map.TextureHashKey.Count; j++)
-                                    {
-                                        if (tmid == General.Map.TextureHashKey[j])
-                                        {
-                                            if (j == 0)
-                                            {
-                                                mname = "-";
-                                                break;
-                                            }
-
-                                            mname = General.Map.TextureHashName[j];
-                                            break;
-                                        }
-                                    }*/
-
                                     s = map.CreateSidedef(l, true, sectorlink[sc]);
 
                                     s.HashTexHigh = thigh;
@@ -570,9 +473,6 @@ namespace CodeImp.DoomBuilder.IO
                                     s.HashTexLow = tlow;
 
                                     s.Update(offsetx, offsety, hname, mname, lname);
-                                    //General.Map.Config.D64TextureIndex[thigh].Title,
-                                    //General.Map.Config.D64TextureIndex[tmid].Title,
-                                    //General.Map.Config.D64TextureIndex[tlow].Title);
                                 }
                                 else
                                 {
@@ -602,51 +502,6 @@ namespace CodeImp.DoomBuilder.IO
                                 // Create back sidedef
                                 if (sectorlink.ContainsKey(sc))
                                 {
-                                    /*for (int j = 0; j < General.Map.TextureHashKey.Count; j++)
-                                    {
-                                        if (thigh == General.Map.TextureHashKey[j])
-                                        {
-                                            if (j == 0)
-                                            {
-                                                hname = "-";
-                                                break;
-                                            }
-
-                                            hname = General.Map.TextureHashName[j];
-                                            break;
-                                        }
-                                    }
-
-                                    for (int j = 0; j < General.Map.TextureHashKey.Count; j++)
-                                    {
-                                        if (tlow == General.Map.TextureHashKey[j])
-                                        {
-                                            if (j == 0)
-                                            {
-                                                lname = "-";
-                                                break;
-                                            }
-
-                                            lname = General.Map.TextureHashName[j];
-                                            break;
-                                        }
-                                    }
-
-                                    for (int j = 0; j < General.Map.TextureHashKey.Count; j++)
-                                    {
-                                        if (tmid == General.Map.TextureHashKey[j])
-                                        {
-                                            if (j == 0)
-                                            {
-                                                mname = "-";
-                                                break;
-                                            }
-
-                                            mname = General.Map.TextureHashName[j];
-                                            break;
-                                        }
-                                    }*/
-
                                     s = map.CreateSidedef(l, false, sectorlink[sc]);
 
                                     s.HashTexHigh = thigh;
@@ -654,9 +509,6 @@ namespace CodeImp.DoomBuilder.IO
                                     s.HashTexLow = tlow;
 
                                     s.Update(offsetx, offsety, hname, mname, lname);
-                                    //General.Map.Config.D64TextureIndex[thigh].Title,
-                                    //General.Map.Config.D64TextureIndex[tmid].Title,
-                                    //General.Map.Config.D64TextureIndex[tlow].Title);
                                 }
                                 else
                                 {
@@ -684,56 +536,6 @@ namespace CodeImp.DoomBuilder.IO
             linedefsmem.Dispose();
             sidedefsmem.Dispose();
         }
-
-        // This reads the MACROS from WAD file
-        /*private void ReadMacros(MapSet map, int firstindex)
-        {
-            MemoryStream mem;
-            BinaryReader reader;
-            int count;
-            int setcount;
-            int specials;
-            int type, tag, batch;
-            int i = 0;
-
-            // Get the lump from wad file
-            Lump lump = wad.FindLump("MACROS", firstindex);
-            if (lump == null) throw new Exception("Could not find required lump MACROS!");
-
-            if (lump.Length <= 4)
-                return;
-
-            // Prepare to read the items
-            mem = new MemoryStream(lump.Stream.ReadAllBytes());
-            reader = new BinaryReader(mem);
-
-            count = reader.ReadUInt16();
-            specials = reader.ReadUInt16();
-
-            map.NumMacros = count;
-
-            if (count > 0)
-            {
-                // Read items from the lump
-                for(i = 0; i < count; i++)
-                {
-                    setcount = reader.ReadUInt16();
-                    map.Macros[i] = new Macro(setcount);
-                    for (int j = 0; j < setcount + 1; j++)
-                    {
-                        batch = reader.ReadInt16();
-                        tag = reader.ReadInt16();
-                        type = reader.ReadInt16();
-
-                        if(j < setcount)    // avoid reading the 'dummy' macro
-                            map.Macros[i].Set(j, type, batch, tag);
-                    }
-                }
-            }
-
-            // Done
-            mem.Dispose();
-        }*/
 
         #endregion
 
@@ -763,45 +565,6 @@ namespace CodeImp.DoomBuilder.IO
             WriteLinedefs(map, position, manager.Config.MapLumpNames, sidedefids, vertexids);
             WriteThings(map, position, manager.Config.MapLumpNames);
         }
-
-        // This writes the map information to the map header lump
-        /*private void WriteMapInfo(MapSet map, string mapname)
-        {
-            MemoryStream mem;
-            BinaryWriter writer;
-            Lump lump;
-            string name = General.Map.Map.MapInfo.MapName;
-            int musid = General.Map.Map.MapInfo.MusicID;
-            PixelColor fogcolor = General.Map.Map.MapInfo.FogColor;
-            PixelColor topcolor = General.Map.Map.MapInfo.TopSkyColor;
-            PixelColor lowercolor = General.Map.Map.MapInfo.LowerSkyColor;
-            string[] intertext = General.Map.Map.MapInfo.IntermissionText;
-            bool overridesky = General.Map.Map.MapInfo.OverrideSky;
-            bool finale = General.Map.Map.MapInfo.Finale;
-            byte type = General.Map.Map.MapInfo.Type;
-
-            mem = new MemoryStream();
-            writer = new BinaryWriter(mem, WAD.ENCODING);
-
-            General.Map.Map.MapInfo.WriteString(writer, name, 16);
-
-            for (int i = 0; i < MapInfo.INTERMISSION_LINES; i++)
-                map.MapInfo.WriteString(writer, intertext[i], 28);
-
-            writer.Write((bool)overridesky);
-            writer.Write((bool)finale);
-            writer.Write((byte)type);
-            writer.Write((int)fogcolor.ToInt());
-            writer.Write((int)topcolor.ToInt());
-            writer.Write((int)lowercolor.ToInt());
-            writer.Write((Int16)musid);
-
-            MapManager.RemoveSpecificLump(wad, mapname, 0, MapManager.TEMP_MAP_HEADER, manager.Config.MapLumpNames);
-            lump = wad.Insert(mapname, 0, (int)mem.Length);
-            lump.Stream.Seek(0, SeekOrigin.Begin);
-            mem.WriteTo(lump.Stream);
-            mem.Flush();
-        }*/
 
         // This writes the THINGS to WAD file
         private void WriteThings(MapSet map, int position, IDictionary maplumps)
@@ -979,7 +742,7 @@ namespace CodeImp.DoomBuilder.IO
                 {
                     if (ht == General.Map.TextureHashName[i])
                     {
-                        top = (int)General.Map.TextureHashKey[i];
+                        top = i;
                         break;
                     }
                 }
@@ -988,7 +751,7 @@ namespace CodeImp.DoomBuilder.IO
                 {
                     if (lt == General.Map.TextureHashName[i])
                     {
-                        low = (int)General.Map.TextureHashKey[i];
+                        low = i;
                         break;
                     }
                 }
@@ -997,7 +760,7 @@ namespace CodeImp.DoomBuilder.IO
                 {
                     if (mt == General.Map.TextureHashName[i])
                     {
-                        mid = (int)General.Map.TextureHashKey[i];
+                        mid = i;
                         break;
                     }
                 }
@@ -1115,7 +878,7 @@ namespace CodeImp.DoomBuilder.IO
                 {
                     if (ft == General.Map.TextureHashName[i])
                     {
-                        flr = (int)General.Map.TextureHashKey[i];
+                        flr = i;
                         break;
                     }
                 }
@@ -1124,7 +887,7 @@ namespace CodeImp.DoomBuilder.IO
                 {
                     if (ct == General.Map.TextureHashName[i])
                     {
-                        ceil = (int)General.Map.TextureHashKey[i];
+                        ceil = i;
                         break;
                     }
                 }

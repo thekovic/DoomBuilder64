@@ -92,6 +92,7 @@ namespace CodeImp.DoomBuilder.IO
         public override double MinCoordinate { get { return (double)short.MinValue; } }
         public override bool InDoom64Mode { get { return true; } } // villsa
         public override bool InDoom64N64Mode { get { return true; } }
+        public override bool IsConvertor { get { return false; } }
 
         #endregion
 
