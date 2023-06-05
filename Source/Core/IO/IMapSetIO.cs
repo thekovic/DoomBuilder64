@@ -68,5 +68,6 @@ namespace CodeImp.DoomBuilder.IO
         double MaxCoordinate { get; }
         double MinCoordinate { get; }
         bool InDoom64Mode { get; }  // villsa
+        bool InDoom64N64Mode { get; }
     }
 }

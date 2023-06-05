@@ -84,6 +84,7 @@ namespace CodeImp.DoomBuilder.IO
         public abstract double MaxCoordinate { get; }
         public abstract double MinCoordinate { get; }
         public abstract bool InDoom64Mode { get; }  // villsa
+        public abstract bool InDoom64N64Mode { get; }
 
         #endregion
 
