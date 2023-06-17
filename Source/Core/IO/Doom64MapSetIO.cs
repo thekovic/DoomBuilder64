@@ -78,7 +78,7 @@ namespace CodeImp.DoomBuilder.IO
         public override bool HasNumericLinedefActivations { get { return true; } }
         public override int MaxTag { get { return ushort.MaxValue; } }
         public override int MinTag { get { return ushort.MinValue; } }
-        public override int MaxAction { get { return 511; } }
+        public override int MaxAction { get { return 1024; } }
         public override int MinAction { get { return ushort.MinValue; } }
         public override int MaxArgument { get { return 0; } }
         public override int MinArgument { get { return 0; } }
