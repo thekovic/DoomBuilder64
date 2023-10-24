@@ -122,17 +122,17 @@
 #define Plat_DownWaitUpBy(tag, value)                   PushVar(value); 236:tag
 #define Plat_DWUBy(tag, value)                          PushVar(value); 236:tag
 #define Plat_DownUpFastByValue(tag, value)              PushVar(value); 237:tag
-#define Plat_DownWaitUpFastByValue(tag, value)          PushVar(value); 237:tag
-#define Plat_DownWaitUpFastBy(tag, value)               PushVar(value); 237:tag
-#define Plat_DWUFastBy(tag, value)                      PushVar(value); 237:tag
+#define Plat_DownWaitUpByValueFast(tag, value)          PushVar(value); 237:tag
+#define Plat_DownWaitUpByFast(tag, value)               PushVar(value); 237:tag
+#define Plat_DWUByFast(tag, value)                      PushVar(value); 237:tag
 #define Plat_UpDownByValue(tag, value)                  PushVar(value); 238:tag
 #define Plat_UpWaitDownByValue(tag, value)              PushVar(value); 238:tag
 #define Plat_UpWaitDownBy(tag, value)                   PushVar(value); 238:tag
 #define Plat_UWDBy(tag, value)                          PushVar(value); 238:tag
 #define Plat_UpDownFastByValue(tag, value)              PushVar(value); 239:tag
-#define Plat_UpWaitDownFastByValue(tag, value)          PushVar(value); 239:tag
-#define Plat_UpWaitDownFastBy(tag, value)               PushVar(value); 239:tag
-#define Plat_UWDFastBy(tag, value)                      PushVar(value); 239:tag
+#define Plat_UpWaitDownByValueFast(tag, value)          PushVar(value); 239:tag
+#define Plat_UpWaitDownByFast(tag, value)               PushVar(value); 239:tag
+#define Plat_UWDByFast(tag, value)                      PushVar(value); 239:tag
 
 //
 // TELEPORT
