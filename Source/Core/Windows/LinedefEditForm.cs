@@ -76,105 +76,6 @@ namespace CodeImp.DoomBuilder.Windows
             }
         }
 
-        // villsa 9/12/11
-        private void SwitchTextureMask(Linedef l)
-        {
-            int switchflags = 0;
-            int mask = 0;
-
-            if ((l.SwitchMask & 0x2000) == 0x2000)
-                switchflags |= 0x2000;
-
-            if ((l.SwitchMask & 0x4000) == 0x4000)
-                switchflags |= 0x4000;
-
-            if ((l.SwitchMask & 0x8000) == 0x8000)
-                switchflags |= 0x8000;
-
-            if (l.IsFlagSet("65536"))
-                switchflags |= 65536;
-
-            mask = (switchflags & 0x6000);
-
-            if (mask == 0)
-                return;
-
-            if (mask == 0x2000)
-            {
-                chkSwitchTextureUpper.Checked = true;
-
-                if ((switchflags & 0x8000) == 0x8000)
-                    chkSwitchDisplayMiddle.Checked = true;
-                else
-                    chkSwitchDisplayLower.Checked = true;
-            }
-            else if (mask == 0x4000)
-            {
-                chkSwitchTextureLower.Checked = true;
-
-                if ((switchflags & 0x10000) == 0x10000)
-                    chkSwitchDisplayMiddle.Checked = true;
-                else if ((switchflags & 0x8000) == 0x8000)
-                    chkSwitchDisplayUpper.Checked = true;
-            }
-            else if (mask == 0x6000)
-            {
-                chkSwitchTextureMiddle.Checked = true;
-
-                if ((switchflags & 0x8000) == 0x8000)
-                    chkSwitchDisplayUpper.Checked = true;
-                else
-                    chkSwitchDisplayLower.Checked = true;
-            }
-        }
-
-        // villsa 9/12/11
-        private void SetSwitchMask(Linedef l)
-        {
-            int switchflags = 0;
-
-            // just check for one of the checkboxes.. no need to
-            // check for all of them..
-            if (chkSwitchTextureLower.Enabled == false)
-                return;
-
-            if (chkSwitchTextureLower.Checked == true)
-            {
-                if (chkSwitchDisplayMiddle.Checked == true)
-                {
-                    switchflags = 0x4000;
-                }
-                else if (chkSwitchDisplayUpper.Checked == true)
-                {
-                    switchflags = (0x4000 | 0x8000);
-                }
-            }
-            else if (chkSwitchTextureMiddle.Checked == true)
-            {
-                if (chkSwitchDisplayLower.Checked == true)
-                {
-                    switchflags = (0x2000 | 0x4000);
-                }
-                else if (chkSwitchDisplayUpper.Checked == true)
-                {
-                    switchflags = (0x2000 | 0x4000 | 0x8000);
-                }
-            }
-            else if (chkSwitchTextureUpper.Checked == true)
-            {
-                if (chkSwitchDisplayMiddle.Checked == true)
-                {
-                    switchflags = (0x2000 | 0x8000);
-                }
-                else if (chkSwitchDisplayLower.Checked == true)
-                {
-                    switchflags = 0x2000;
-                }
-            }
-
-            l.SwitchMask = switchflags;
-        }
-
         private void PreSetActivationFlag(CheckBox c, int flag, int mask)
         {
             if ((flag & mask) == mask)
@@ -196,6 +97,51 @@ namespace CodeImp.DoomBuilder.Windows
                 l.Activate |= mask;
             else if (c.CheckState == CheckState.Unchecked)
                 l.Activate &= ~mask;
+        }
+
+        private void SetUpSwitchCheckboxes_SingleSided(Linedef l)
+        {
+            if ((l.SwitchMask & (0x2000 + 0x8000 + 0x10000)) == (0x2000 + 0x8000 + 0x10000))
+            {
+                check_SingleSidedSwitchTextureInLower.CheckState = CheckState.Unchecked;
+            }
+            else if ((l.SwitchMask & (0x4000 + 0x8000 + 0x10000)) == (0x4000 + 0x8000 + 0x10000))
+            {
+                check_SingleSidedSwitchTextureInLower.CheckState = CheckState.Checked;
+            }
+            else
+            {
+                check_SingleSidedSwitchTextureInLower.CheckState = CheckState.Indeterminate;
+            }
+        }
+
+        private void SetUpSwitchCheckboxes_DoubleSided(Linedef l)
+        {
+            if ((l.SwitchMask & (0x4000 + 0x8000)) == (0x4000 + 0x8000))
+            {
+                check_DoubleSidedDisplaySwitchOnLowerTexture.CheckState = CheckState.Unchecked;
+                check_DoubleSidedSwitchTextureInMiddle.CheckState = CheckState.Unchecked;
+            }
+            else if ((l.SwitchMask & (0x2000 + 0x4000 + 0x8000)) == (0x2000 + 0x4000 + 0x8000))
+            {
+                check_DoubleSidedDisplaySwitchOnLowerTexture.CheckState = CheckState.Unchecked;
+                check_DoubleSidedSwitchTextureInMiddle.CheckState = CheckState.Checked;
+            }
+            else if ((l.SwitchMask & (0x2000 + 0x10000)) == (0x2000 + 0x10000))
+            {
+                check_DoubleSidedDisplaySwitchOnLowerTexture.CheckState = CheckState.Checked;
+                check_DoubleSidedSwitchTextureInMiddle.CheckState = CheckState.Unchecked;
+            }
+            else if ((l.SwitchMask & (0x2000 + 0x4000 + 0x10000)) == (0x2000 + 0x4000 + 0x10000))
+            {
+                check_DoubleSidedDisplaySwitchOnLowerTexture.CheckState = CheckState.Checked;
+                check_DoubleSidedSwitchTextureInMiddle.CheckState = CheckState.Checked;
+            }
+            else
+            {
+                check_DoubleSidedDisplaySwitchOnLowerTexture.CheckState = CheckState.Indeterminate;
+                check_DoubleSidedSwitchTextureInMiddle.CheckState = CheckState.Indeterminate;
+            }
         }
 
         // This sets up the form to edit the given lines
@@ -225,6 +171,22 @@ namespace CodeImp.DoomBuilder.Windows
             // Front side and back side checkboxes
             frontside.Checked = (fl.Front != null);
             backside.Checked = (fl.Back != null);
+
+            // Switch Display checkbox
+            check_EnableSwitchSettings.Checked = (fl.SwitchMask != 0);
+            bool fl_double_sided = ((fl.Front != null) && (fl.Back != null));
+            check_SingleSidedSwitchTextureInLower.Visible = !fl_double_sided;
+            check_DoubleSidedDisplaySwitchOnLowerTexture.Visible = fl_double_sided;
+            check_DoubleSidedSwitchTextureInMiddle.Visible = fl_double_sided;
+
+            if (fl_double_sided)
+            {
+                SetUpSwitchCheckboxes_DoubleSided(fl);
+            }
+            else
+            {
+                SetUpSwitchCheckboxes_SingleSided(fl);
+            }
 
             // Front settings
             if (fl.Front != null)
@@ -261,6 +223,8 @@ namespace CodeImp.DoomBuilder.Windows
             // Go for all lines
             foreach (Linedef l in lines)
             {
+                bool double_sided = ((fl.Front != null) && (fl.Back != null));
+
                 // Flags
                 foreach (CheckBox c in flags.Checkboxes)
                 {
@@ -291,8 +255,6 @@ namespace CodeImp.DoomBuilder.Windows
                         PreSetActivationFlag(activationtypeuse, l.Activate, 16384);
                         PreSetActivationFlag(activationtyperepeat, l.Activate, 32768);
                     }
-
-                    SwitchTextureMask(l);
                 }
 
                 // Action/tags
@@ -314,6 +276,18 @@ namespace CodeImp.DoomBuilder.Windows
                     backside.CheckState = CheckState.Indeterminate;
                     backside.AutoCheck = false;
                 }
+
+                // Switch Display checkbox
+                if ((l.SwitchMask != 0) != check_EnableSwitchSettings.Checked)
+                {
+                    check_EnableSwitchSettings.ThreeState = true;
+                    check_EnableSwitchSettings.CheckState = CheckState.Indeterminate;
+                    check_SingleSidedSwitchTextureInLower.Visible = false;
+                    check_DoubleSidedDisplaySwitchOnLowerTexture.Visible = false;
+                    check_DoubleSidedSwitchTextureInMiddle.Visible = false;
+                }
+
+
 
                 // Front settings
                 if (l.Front != null)
@@ -566,54 +540,36 @@ namespace CodeImp.DoomBuilder.Windows
 
         private void chkSwitchDisplayUpper_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (this.chkSwitchDisplayUpper.Checked)
+            if (this.check_EnableSwitchSettings.Checked)
             {
-                this.chkSwitchDisplayLower.Checked = false;
-                this.chkSwitchDisplayMiddle.Checked = false;
+                this.check_DoubleSidedSwitchTextureInMiddle.Checked = false;
+                this.check_DoubleSidedDisplaySwitchOnLowerTexture.Checked = false;
             }
         }
 
         private void chkSwitchDisplayMiddle_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (this.chkSwitchDisplayMiddle.Checked)
+            if (this.check_DoubleSidedDisplaySwitchOnLowerTexture.Checked)
             {
-                this.chkSwitchDisplayLower.Checked = false;
-                this.chkSwitchDisplayUpper.Checked = false;
+                this.check_DoubleSidedSwitchTextureInMiddle.Checked = false;
+                this.check_EnableSwitchSettings.Checked = false;
             }
         }
 
         private void chkSwitchDisplayLower_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (this.chkSwitchDisplayLower.Checked)
+            if (this.check_DoubleSidedSwitchTextureInMiddle.Checked)
             {
-                this.chkSwitchDisplayUpper.Checked = false;
-                this.chkSwitchDisplayMiddle.Checked = false;
+                this.check_EnableSwitchSettings.Checked = false;
+                this.check_DoubleSidedDisplaySwitchOnLowerTexture.Checked = false;
             }
         }
 
         private void chkSwitchTextureUpper_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (this.chkSwitchTextureUpper.Checked)
+            if (this.check_SingleSidedSwitchTextureInLower.Checked)
             {
                 this.chkSwitchTextureLower.Checked = false;
-                this.chkSwitchTextureMiddle.Checked = false;
-            }
-        }
-
-        private void chkSwitchTextureMiddle_CheckedChanged_1(object sender, EventArgs e)
-        {
-            if (this.chkSwitchTextureMiddle.Checked)
-            {
-                this.chkSwitchTextureLower.Checked = false;
-                this.chkSwitchTextureUpper.Checked = false;
-            }
-        }
-
-        private void chkSwitchTextureLower_CheckedChanged_1(object sender, EventArgs e)
-        {
-            if (this.chkSwitchTextureLower.Checked)
-            {
-                this.chkSwitchTextureUpper.Checked = false;
                 this.chkSwitchTextureMiddle.Checked = false;
             }
         }

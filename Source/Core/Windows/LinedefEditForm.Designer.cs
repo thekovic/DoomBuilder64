@@ -30,8 +30,6 @@ namespace CodeImp.DoomBuilder.Windows
         {
             System.Windows.Forms.Label labelAction;
             System.Windows.Forms.Label taglabel;
-            System.Windows.Forms.Label switchtexturelbl;
-            System.Windows.Forms.Label displayswitchlbl;
             System.Windows.Forms.Label labelFrontSecIndex;
             System.Windows.Forms.Label labelFrontOffset;
             System.Windows.Forms.Label labelFrontLower;
@@ -68,12 +66,10 @@ namespace CodeImp.DoomBuilder.Windows
             this.frontmid = new CodeImp.DoomBuilder.Controls.TextureSelectorControl();
             this.fronthigh = new CodeImp.DoomBuilder.Controls.TextureSelectorControl();
             this.switchsetupbox = new System.Windows.Forms.GroupBox();
-            this.chkSwitchTextureLower = new System.Windows.Forms.CheckBox();
-            this.chkSwitchDisplayLower = new System.Windows.Forms.CheckBox();
-            this.chkSwitchTextureMiddle = new System.Windows.Forms.CheckBox();
-            this.chkSwitchDisplayMiddle = new System.Windows.Forms.CheckBox();
-            this.chkSwitchTextureUpper = new System.Windows.Forms.CheckBox();
-            this.chkSwitchDisplayUpper = new System.Windows.Forms.CheckBox();
+            this.check_DoubleSidedSwitchTextureInMiddle = new System.Windows.Forms.CheckBox();
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture = new System.Windows.Forms.CheckBox();
+            this.check_SingleSidedSwitchTextureInLower = new System.Windows.Forms.CheckBox();
+            this.check_EnableSwitchSettings = new System.Windows.Forms.CheckBox();
             this.activationtype = new System.Windows.Forms.GroupBox();
             this.activationtyperepeat = new System.Windows.Forms.CheckBox();
             this.activationtypeyellow = new System.Windows.Forms.CheckBox();
@@ -87,8 +83,6 @@ namespace CodeImp.DoomBuilder.Windows
             this.heightpanel3 = new System.Windows.Forms.Panel();
             labelAction = new System.Windows.Forms.Label();
             taglabel = new System.Windows.Forms.Label();
-            switchtexturelbl = new System.Windows.Forms.Label();
-            displayswitchlbl = new System.Windows.Forms.Label();
             labelFrontSecIndex = new System.Windows.Forms.Label();
             labelFrontOffset = new System.Windows.Forms.Label();
             labelFrontLower = new System.Windows.Forms.Label();
@@ -128,26 +122,6 @@ namespace CodeImp.DoomBuilder.Windows
             taglabel.Size = new System.Drawing.Size(34, 16);
             taglabel.TabIndex = 6;
             taglabel.Text = "Tag:";
-            // 
-            // switchtexturelbl
-            // 
-            switchtexturelbl.AutoSize = true;
-            switchtexturelbl.Location = new System.Drawing.Point(15, 70);
-            switchtexturelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            switchtexturelbl.Name = "switchtexturelbl";
-            switchtexturelbl.Size = new System.Drawing.Size(101, 16);
-            switchtexturelbl.TabIndex = 20;
-            switchtexturelbl.Text = "Switch Texture:";
-            // 
-            // displayswitchlbl
-            // 
-            displayswitchlbl.AutoSize = true;
-            displayswitchlbl.Location = new System.Drawing.Point(15, 42);
-            displayswitchlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            displayswitchlbl.Name = "displayswitchlbl";
-            displayswitchlbl.Size = new System.Drawing.Size(101, 16);
-            displayswitchlbl.TabIndex = 19;
-            displayswitchlbl.Text = "Switch Display:";
             // 
             // labelFrontSecIndex
             // 
@@ -592,14 +566,10 @@ namespace CodeImp.DoomBuilder.Windows
             // 
             this.switchsetupbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.switchsetupbox.Controls.Add(this.chkSwitchTextureLower);
-            this.switchsetupbox.Controls.Add(this.chkSwitchDisplayLower);
-            this.switchsetupbox.Controls.Add(this.chkSwitchTextureMiddle);
-            this.switchsetupbox.Controls.Add(this.chkSwitchDisplayMiddle);
-            this.switchsetupbox.Controls.Add(this.chkSwitchTextureUpper);
-            this.switchsetupbox.Controls.Add(this.chkSwitchDisplayUpper);
-            this.switchsetupbox.Controls.Add(switchtexturelbl);
-            this.switchsetupbox.Controls.Add(displayswitchlbl);
+            this.switchsetupbox.Controls.Add(this.check_DoubleSidedSwitchTextureInMiddle);
+            this.switchsetupbox.Controls.Add(this.check_DoubleSidedDisplaySwitchOnLowerTexture);
+            this.switchsetupbox.Controls.Add(this.check_SingleSidedSwitchTextureInLower);
+            this.switchsetupbox.Controls.Add(this.check_EnableSwitchSettings);
             this.switchsetupbox.Location = new System.Drawing.Point(641, 420);
             this.switchsetupbox.Margin = new System.Windows.Forms.Padding(4);
             this.switchsetupbox.Name = "switchsetupbox";
@@ -607,79 +577,54 @@ namespace CodeImp.DoomBuilder.Windows
             this.switchsetupbox.Size = new System.Drawing.Size(652, 144);
             this.switchsetupbox.TabIndex = 32;
             this.switchsetupbox.TabStop = false;
-            this.switchsetupbox.Text = "Switch Setup";
             // 
-            // chkSwitchTextureLower
+            // check_DoubleSidedSwitchTextureInMiddle
             // 
-            this.chkSwitchTextureLower.AutoSize = true;
-            this.chkSwitchTextureLower.Location = new System.Drawing.Point(300, 69);
-            this.chkSwitchTextureLower.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSwitchTextureLower.Name = "chkSwitchTextureLower";
-            this.chkSwitchTextureLower.Size = new System.Drawing.Size(67, 20);
-            this.chkSwitchTextureLower.TabIndex = 26;
-            this.chkSwitchTextureLower.Text = "Lower";
-            this.chkSwitchTextureLower.UseVisualStyleBackColor = true;
-            this.chkSwitchTextureLower.CheckedChanged += new System.EventHandler(this.chkSwitchTextureLower_CheckedChanged_1);
+            this.check_DoubleSidedSwitchTextureInMiddle.AutoSize = true;
+            this.check_DoubleSidedSwitchTextureInMiddle.Location = new System.Drawing.Point(23, 97);
+            this.check_DoubleSidedSwitchTextureInMiddle.Margin = new System.Windows.Forms.Padding(4);
+            this.check_DoubleSidedSwitchTextureInMiddle.Name = "check_DoubleSidedSwitchTextureInMiddle";
+            this.check_DoubleSidedSwitchTextureInMiddle.Size = new System.Drawing.Size(295, 20);
+            this.check_DoubleSidedSwitchTextureInMiddle.TabIndex = 25;
+            this.check_DoubleSidedSwitchTextureInMiddle.Text = "Store Switch Texture in Middle Texture Slot";
+            this.check_DoubleSidedSwitchTextureInMiddle.UseVisualStyleBackColor = true;
+            this.check_DoubleSidedSwitchTextureInMiddle.CheckedChanged += new System.EventHandler(this.chkSwitchDisplayLower_CheckedChanged_1);
             // 
-            // chkSwitchDisplayLower
+            // check_DoubleSidedDisplaySwitchOnLowerTexture
             // 
-            this.chkSwitchDisplayLower.AutoSize = true;
-            this.chkSwitchDisplayLower.Location = new System.Drawing.Point(300, 41);
-            this.chkSwitchDisplayLower.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSwitchDisplayLower.Name = "chkSwitchDisplayLower";
-            this.chkSwitchDisplayLower.Size = new System.Drawing.Size(67, 20);
-            this.chkSwitchDisplayLower.TabIndex = 25;
-            this.chkSwitchDisplayLower.Text = "Lower";
-            this.chkSwitchDisplayLower.UseVisualStyleBackColor = true;
-            this.chkSwitchDisplayLower.CheckedChanged += new System.EventHandler(this.chkSwitchDisplayLower_CheckedChanged_1);
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.AutoSize = true;
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.Location = new System.Drawing.Point(23, 69);
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.Margin = new System.Windows.Forms.Padding(4);
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.Name = "check_DoubleSidedDisplaySwitchOnLowerTexture";
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.Size = new System.Drawing.Size(281, 20);
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.TabIndex = 23;
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.Text = "Display Switch Texture on Lower Texture";
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.UseVisualStyleBackColor = true;
+            this.check_DoubleSidedDisplaySwitchOnLowerTexture.CheckedChanged += new System.EventHandler(this.chkSwitchDisplayMiddle_CheckedChanged_1);
             // 
-            // chkSwitchTextureMiddle
+            // check_SingleSidedSwitchTextureInLower
             // 
-            this.chkSwitchTextureMiddle.AutoSize = true;
-            this.chkSwitchTextureMiddle.Location = new System.Drawing.Point(224, 69);
-            this.chkSwitchTextureMiddle.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSwitchTextureMiddle.Name = "chkSwitchTextureMiddle";
-            this.chkSwitchTextureMiddle.Size = new System.Drawing.Size(70, 20);
-            this.chkSwitchTextureMiddle.TabIndex = 24;
-            this.chkSwitchTextureMiddle.Text = "Middle";
-            this.chkSwitchTextureMiddle.UseVisualStyleBackColor = true;
-            this.chkSwitchTextureMiddle.CheckedChanged += new System.EventHandler(this.chkSwitchTextureMiddle_CheckedChanged_1);
+            this.check_SingleSidedSwitchTextureInLower.AutoSize = true;
+            this.check_SingleSidedSwitchTextureInLower.Location = new System.Drawing.Point(23, 41);
+            this.check_SingleSidedSwitchTextureInLower.Margin = new System.Windows.Forms.Padding(4);
+            this.check_SingleSidedSwitchTextureInLower.Name = "check_SingleSidedSwitchTextureInLower";
+            this.check_SingleSidedSwitchTextureInLower.Size = new System.Drawing.Size(292, 20);
+            this.check_SingleSidedSwitchTextureInLower.TabIndex = 22;
+            this.check_SingleSidedSwitchTextureInLower.Text = "Store Switch Texture in Lower Texture Slot";
+            this.check_SingleSidedSwitchTextureInLower.UseVisualStyleBackColor = true;
+            this.check_SingleSidedSwitchTextureInLower.CheckedChanged += new System.EventHandler(this.chkSwitchTextureUpper_CheckedChanged_1);
             // 
-            // chkSwitchDisplayMiddle
+            // check_EnableSwitchSettings
             // 
-            this.chkSwitchDisplayMiddle.AutoSize = true;
-            this.chkSwitchDisplayMiddle.Location = new System.Drawing.Point(222, 41);
-            this.chkSwitchDisplayMiddle.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSwitchDisplayMiddle.Name = "chkSwitchDisplayMiddle";
-            this.chkSwitchDisplayMiddle.Size = new System.Drawing.Size(70, 20);
-            this.chkSwitchDisplayMiddle.TabIndex = 23;
-            this.chkSwitchDisplayMiddle.Text = "Middle";
-            this.chkSwitchDisplayMiddle.UseVisualStyleBackColor = true;
-            this.chkSwitchDisplayMiddle.CheckedChanged += new System.EventHandler(this.chkSwitchDisplayMiddle_CheckedChanged_1);
-            // 
-            // chkSwitchTextureUpper
-            // 
-            this.chkSwitchTextureUpper.AutoSize = true;
-            this.chkSwitchTextureUpper.Location = new System.Drawing.Point(148, 69);
-            this.chkSwitchTextureUpper.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSwitchTextureUpper.Name = "chkSwitchTextureUpper";
-            this.chkSwitchTextureUpper.Size = new System.Drawing.Size(67, 20);
-            this.chkSwitchTextureUpper.TabIndex = 22;
-            this.chkSwitchTextureUpper.Text = "Upper";
-            this.chkSwitchTextureUpper.UseVisualStyleBackColor = true;
-            this.chkSwitchTextureUpper.CheckedChanged += new System.EventHandler(this.chkSwitchTextureUpper_CheckedChanged_1);
-            // 
-            // chkSwitchDisplayUpper
-            // 
-            this.chkSwitchDisplayUpper.AutoSize = true;
-            this.chkSwitchDisplayUpper.Location = new System.Drawing.Point(148, 41);
-            this.chkSwitchDisplayUpper.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSwitchDisplayUpper.Name = "chkSwitchDisplayUpper";
-            this.chkSwitchDisplayUpper.Size = new System.Drawing.Size(67, 20);
-            this.chkSwitchDisplayUpper.TabIndex = 21;
-            this.chkSwitchDisplayUpper.Text = "Upper";
-            this.chkSwitchDisplayUpper.UseVisualStyleBackColor = true;
-            this.chkSwitchDisplayUpper.CheckedChanged += new System.EventHandler(this.chkSwitchDisplayUpper_CheckedChanged_1);
+            this.check_EnableSwitchSettings.AutoSize = true;
+            this.check_EnableSwitchSettings.Location = new System.Drawing.Point(14, -1);
+            this.check_EnableSwitchSettings.Margin = new System.Windows.Forms.Padding(4);
+            this.check_EnableSwitchSettings.Name = "check_EnableSwitchSettings";
+            this.check_EnableSwitchSettings.Size = new System.Drawing.Size(119, 20);
+            this.check_EnableSwitchSettings.TabIndex = 21;
+            this.check_EnableSwitchSettings.Text = "Display Switch";
+            this.check_EnableSwitchSettings.UseVisualStyleBackColor = true;
+            this.check_EnableSwitchSettings.CheckedChanged += new System.EventHandler(this.chkSwitchDisplayUpper_CheckedChanged_1);
             // 
             // activationtype
             // 
@@ -878,12 +823,10 @@ namespace CodeImp.DoomBuilder.Windows
         private System.Windows.Forms.CheckBox activationtypecross;
         private System.Windows.Forms.CheckBox activationtypeuse;
         private System.Windows.Forms.GroupBox switchsetupbox;
-        private System.Windows.Forms.CheckBox chkSwitchTextureLower;
-        private System.Windows.Forms.CheckBox chkSwitchDisplayLower;
-        private System.Windows.Forms.CheckBox chkSwitchTextureMiddle;
-        private System.Windows.Forms.CheckBox chkSwitchDisplayMiddle;
-        private System.Windows.Forms.CheckBox chkSwitchTextureUpper;
-        private System.Windows.Forms.CheckBox chkSwitchDisplayUpper;
+        private System.Windows.Forms.CheckBox check_DoubleSidedSwitchTextureInMiddle;
+        private System.Windows.Forms.CheckBox check_DoubleSidedDisplaySwitchOnLowerTexture;
+        private System.Windows.Forms.CheckBox check_SingleSidedSwitchTextureInLower;
+        private System.Windows.Forms.CheckBox check_EnableSwitchSettings;
         private System.Windows.Forms.GroupBox frontgroup;
         private System.Windows.Forms.CheckBox frontside;
         private Controls.ButtonsNumericTextbox frontoffsety;
