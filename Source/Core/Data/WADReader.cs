@@ -326,13 +326,15 @@ namespace CodeImp.DoomBuilder.Data
         // villsa
         private uint HashTextureName(string name)
         {
-            uint hash = 1315423911;
-            int j = 0;
+            // clamp number of checked characters to 8 to match lumpinfo_t
+            int name_length_limit = Math.Min(name.Length, 8);
+            string name_upper = name.ToUpper();
 
-            for (uint i = 0; i < name.Length && name[j] != '\0'; j++, i++)
+            uint hash = 1315423911;
+
+            for (int i = 0; i < name_length_limit; i++)
             {
-                string c = (name[j].ToString()).ToUpper();
-                hash ^= ((hash << 5) + c[0] + (hash >> 2));
+                hash ^= ((hash << 5) + name_upper[i] + (hash >> 2));
             }
 
             return hash % 65536;
