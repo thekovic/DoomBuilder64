@@ -213,3 +213,6 @@
 #define UnlockCheatMenu                                 253:0
 #define DisplaySkyLogo                                  254:0
 #define No_Op                                           0:0
+#define Orange_Artifact_Switch(tag)						90:tag
+#define Blue_Artifact_Switch(tag)						91:tag
+#define Purple_Artifact_Switch(tag)						92:tag
